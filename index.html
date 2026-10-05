@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bodas de Perla · Raúl y Rossio</title>
+  <meta name="description" content="30 años de amor. Una tarjeta para celebrar las bodas de perla de Raúl Aguirre y Rossio López.">
+  <meta name="theme-color" content="#2a211e">
+  <meta property="og:title" content="Bodas de Perla · Raúl y Rossio">
+  <meta property="og:description" content="30 años de elegirse. Feliz aniversario, papitos.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="photos/09-torta.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23f4efe8'/%3E%3Ccircle cx='16' cy='16' r='8' fill='%23fff'/%3E%3Ccircle cx='13' cy='13' r='2.2' fill='%23fff' opacity='.9'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Dancing+Script:wght@500;600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <div id="loading-screen" aria-live="polite">
+    <div class="loader-inner">
+      <div class="loader-pearl" aria-hidden="true"></div>
+      <p class="loader-number">30</p>
+      <p class="loader-label">Bodas de Perla</p>
+    </div>
+  </div>
+
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <button id="audio-btn" type="button" aria-label="Reproducir música">
+    <div class="audio-waves" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <span class="audio-label">Música</span>
+  </button>
+  <audio id="bg-music" preload="auto" loop>
+    <source src="audio/primer-amor.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="pearl-layer" aria-hidden="true"></div>
+
+  <section id="envelope-section">
+    <div class="envelope-wrapper" id="envelope-wrap" role="button" tabindex="0" aria-label="Abrir la tarjeta de aniversario">
+      <p class="envelope-hint">Toca para abrir</p>
+      <div class="envelope" id="envelope">
+        <div class="envelope-back"></div>
+        <div class="envelope-card" id="envelope-card">
+          <div class="card-inner">
+            <p class="card-kicker">Bodas de Perla</p>
+            <h2>Feliz Aniversario</h2>
+            <p class="card-name">Raúl &amp; Rossio</p>
+            <p class="card-age">30 años</p>
+          </div>
+        </div>
+        <div class="envelope-front"></div>
+        <div class="envelope-flap"></div>
+        <div class="envelope-seal" aria-hidden="true">R&amp;R</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portada">
+    <div class="portada-glow" aria-hidden="true"></div>
+    <p class="eyebrow fade-in">5 de octubre de 2026</p>
+    <p class="portada-kicker fade-in">Bodas de Perla</p>
+    <h1 class="portada-title fade-in"><span>Raúl</span> <em>&amp;</em> <span>Rossio</span></h1>
+    <p class="portada-surnames fade-in">Aguirre · López</p>
+    <div class="portada-line fade-in" aria-hidden="true"></div>
+    <p class="portada-years fade-in">1996 — 2026</p>
+    <p class="portada-scroll fade-in">Treinta años de elegirse</p>
+  </section>
+
+  <section id="carta" class="section-cream">
+    <article class="letter-paper">
+      <p class="letter-date">5 de octubre de 2026</p>
+      <p class="letter-greeting">Queridos papitos,</p>
+      <div class="letter-body" id="typewriter-text"></div>
+      <p class="letter-signature" id="letter-signature">Con todo nuestro amor,<br><span>Sus hijos</span></p>
+    </article>
+  </section>
+
+  <section id="contador" class="section-dark">
+    <div class="sparkle-field" aria-hidden="true"></div>
+    <p class="contador-kicker">Hoy se cumplen</p>
+    <p class="contador-number" id="year-counter">0</p>
+    <p class="contador-label">años de quedarse,<br>de cuidarse y de reírse juntos</p>
+  </section>
+
+  <section id="album" class="section-cream">
+    <h2 class="section-title fade-in">El álbum</h2>
+    <p class="section-subtitle fade-in">Desliza las fotos. Cada una guarda un pedacito de ustedes.</p>
+    <div class="album-frame fade-in">
+      <div class="album-stage" id="album-stage">
+        <button class="album-arrow prev" type="button" id="album-prev" aria-label="Foto anterior">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="15 5 8 12 15 19"/></svg>
+        </button>
+        <img id="album-img" alt="" draggable="false">
+        <button class="album-arrow next" type="button" id="album-next" aria-label="Foto siguiente">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="9 5 16 12 9 19"/></svg>
+        </button>
+      </div>
+      <div class="album-meta">
+        <p class="album-year" id="album-year"></p>
+        <p class="album-caption" id="album-caption"></p>
+        <p class="album-count" id="album-count"></p>
+      </div>
+      <div class="album-thumbs" id="album-thumbs" role="tablist" aria-label="Miniaturas"></div>
+    </div>
+  </section>
+
+  <section id="historia" class="section-ivory">
+    <h2 class="section-title fade-in">La historia</h2>
+    <p class="section-subtitle fade-in">No hizo falta un escenario grande. Alcanzó con estar.</p>
+    <div class="timeline">
+      <div class="timeline-line" id="timeline-line"></div>
+
+      <article class="timeline-item left fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <img src="photos/01-comienzo.jpg" alt="Raúl y Rossio jóvenes, con sus hijos, en el patio de la casa" loading="lazy">
+          <div class="timeline-body">
+            <span>El comienzo</span>
+            <p>Patio, jeans y una familia que recién empezaba. Ahí ya se veía de qué iba esta historia.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="timeline-item right fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <img src="photos/02-lago.jpg" alt="Raúl y Rossio juntos en un muelle, frente al lago" loading="lazy">
+          <div class="timeline-body">
+            <span>2018</span>
+            <p>El lago, el mismo buzo y esa costumbre de salir siempre del mismo lado.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="timeline-item left fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <img src="photos/04-fogata.jpg" alt="Raúl y Rossio abrazados junto a una fogata" loading="lazy">
+          <div class="timeline-body">
+            <span>2020</span>
+            <p>Una fogata, un abrazo y el calor de la casa de siempre.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="timeline-item right fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <img src="photos/05-mariachi.jpg" alt="Raúl y Rossio vestidos de gala, con mariachi" loading="lazy">
+          <div class="timeline-body">
+            <span>2021</span>
+            <p>Mariachi, arroz en el piso y ustedes dos de gala, sonriendo como si fuera el primer día.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="timeline-item left fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <img src="photos/06-totora.jpg" alt="Raúl y Rossio sentados en una balsa de totora" loading="lazy">
+          <div class="timeline-body">
+            <span>2022</span>
+            <p>Sentados en la totora, cerquita, como si el tiempo no corriera.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="timeline-item right fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <img src="photos/07-asado.jpg" alt="Raúl y Rossio junto a la parrilla" loading="lazy">
+          <div class="timeline-body">
+            <span>2023</span>
+            <p>El asadito de siempre: él con la pinza, ella con el tenedor, y el almuerzo asegurado.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="timeline-item left fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <img src="photos/08-sombrillas.jpg" alt="Raúl y Rossio bajo una calle de sombrillas" loading="lazy">
+          <div class="timeline-body">
+            <span>2025</span>
+            <p>Bajo las sombrillas, de la mano, en una calle que parecía armada para ustedes.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="timeline-item right fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <img src="photos/09-torta.jpg" alt="Raúl y Rossio con la torta del aniversario 29" loading="lazy">
+          <div class="timeline-body">
+            <span>El año 29</span>
+            <p>Torta, una rosa y una velita. Faltaba una para llegar a la perla.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="timeline-item left fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <img src="photos/11-juntos.jpg" alt="Raúl y Rossio abrazados, vestidos iguales de gris" loading="lazy">
+          <div class="timeline-body">
+            <span>2026</span>
+            <p>Otro año, el mismo lugar: uno al lado del otro. Así se cumplen las bodas de perla.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="galeria" class="section-blush">
+    <h2 class="section-title fade-in">Todas juntas</h2>
+    <p class="section-subtitle fade-in">Toca una foto para verla grande.</p>
+    <div class="polaroid-wall" id="polaroid-wall"></div>
+  </section>
+
+  <section id="perlas" class="section-dark">
+    <h2 class="section-title fade-in">Perlas para ustedes</h2>
+    <p class="section-subtitle fade-in">Toca cada perla. Adentro hay un mensaje.</p>
+    <div class="pearls" id="pearls">
+      <button class="pearl" type="button" aria-label="Perla 1" data-msg="Gracias por el hogar."></button>
+      <button class="pearl" type="button" aria-label="Perla 2" data-msg="30 años y todavía se les nota."></button>
+      <button class="pearl" type="button" aria-label="Perla 3" data-msg="Por muchos asados más."></button>
+      <button class="pearl" type="button" aria-label="Perla 4" data-msg="Primer amor, y sigue siéndolo."></button>
+      <button class="pearl" type="button" aria-label="Perla 5" data-msg="Siempre juntitos."></button>
+      <button class="pearl" type="button" aria-label="Perla 6" data-msg="Los queremos, papitos."></button>
+    </div>
+    <p class="pearl-message" id="pearl-message" aria-live="polite">Elige una perla</p>
+  </section>
+
+  <section id="cierre">
+    <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+    <div class="cierre-glow" aria-hidden="true"></div>
+    <div class="cierre-content">
+      <p class="cierre-kicker fade-in">5 de octubre</p>
+      <h2 class="cierre-title fade-in">Feliz aniversario,<br><span>papitos</span></h2>
+      <p class="cierre-names fade-in">Raúl Aguirre &amp; Rossio López</p>
+      <p class="cierre-quote fade-in">Treinta años no se cumplen de casualidad. Se cumplen quedándose.</p>
+      <div class="cierre-hearts" aria-hidden="true"><span>♥</span><span>♥</span><span>♥</span></div>
+      <p class="cierre-sign fade-in">Con todo nuestro amor,<br><span>Sus hijos</span></p>
+      <p class="cierre-song fade-in">Primer Amor · Más y Más de Bolivia</p>
+    </div>
+  </section>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Foto ampliada">
+    <button class="lightbox-close" type="button" aria-label="Cerrar">&times;</button>
+    <button class="lightbox-arrow prev" type="button" id="lightbox-prev" aria-label="Foto anterior">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="15 5 8 12 15 19"/></svg>
+    </button>
+    <figure class="lightbox-figure">
+      <img id="lightbox-img" alt="">
+      <figcaption id="lightbox-caption"></figcaption>
+    </figure>
+    <button class="lightbox-arrow next" type="button" id="lightbox-next" aria-label="Foto siguiente">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="9 5 16 12 9 19"/></svg>
+    </button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
